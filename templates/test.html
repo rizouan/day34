@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+{% block stylesheet %} {% endblock %}
+{% block content %}
+<form method="POST" class="post-form"  enctype="multipart/form-data">
+  {% csrf_token %}
+  {{form.as_p}}
+  <button type="submit" name="button">Submit</button>
+</form>
+{% endblock %}

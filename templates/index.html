@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+{% block stylesheet %} {% endblock %}
+{% block content %}
+
+    <table class="table table-bordered" id="emptable" data-page-length="5">
+      <thead class='table-dark'>
+        <tr>
+          <td>Id</td>
+          <td>Name</td>
+          <td>Date of Birth</td>
+          <td>Email</td>
+          <td>Salary</td>
+          <td>Actions</td>
+        </tr>
+      </thead>
+      <tbody>
+        {% for emp in employees %}
+        <tr>
+          <td>{{emp.id}}</td>
+          <td>{{emp.name}}</td>
+          <td>{{emp.dob | date:"m/d/Y" }}</td>
+          <td>{{emp.email}}</td>
+          <td>{{emp.salary | floatformat:"-3" }}</td>
+          <td>
+              <a href="/edit/{{ emp.id }}">Edit</a> |
+              <a href="/delete/{{ emp.id }}">Delete</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <br>
+
+      <br>
+      <p align="right"><a href="/create" class="btn btn-primary">Add New Record</a></p>
+      <br><br>
+
+{% endblock %}
